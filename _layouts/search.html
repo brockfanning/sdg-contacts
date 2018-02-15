@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<section class="usa-section">
+  <div class="usa-grid">
+
+    <select id="search">
+      <option value="">Select a country</option>
+      {% for country in site.data.countries %}
+      <option value="{{ country[0] }}">{{ country[0] | replace: "_", " " }}</option>
+      {% endfor %}
+    </select>
+
+    <div id="results">
+      <table>
+        <thead>
+          <tr>
+            <td>Indicator</td><td>Name</td><td>Email</td>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
