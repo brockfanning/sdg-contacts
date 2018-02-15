@@ -5,27 +5,34 @@
     return;
   }
 
-  // Start with the results hidden.
-  var results = document.getElementById('results');
-  results.style.display = 'none';
+  var dropdowns = document.getElementsByClassName('dropdown');
+  for (var i = 0; i < dropdowns.length; i++) {
 
-  // A template for the table rows.
-  var rowTemplate = {'<>':'tr','html': '<td>${indicator}</td><td>${name}</td><td>${email}</td>'};
+    // Add the change event callback.
+    dropdowns.item(i).addEventListener('change', function(e) {
 
-  // Add the change event callback.
-  document.getElementById('search').addEventListener('change', function(e) {
-    var selection = this.options[this.selectedIndex];
-    if (selection.value) {
-      // If an actual value, replace with the table rows.
-      results.style.display = 'block';
-      var contacts = contactData[selection.value];
-      var rows = json2html.transform(contacts, rowTemplate);
-      document.getElementById('rows').innerHTML = rows;
-    }
-    else {
-      // Otherwise, hidden the results.
-      results.style.display = 'none';
-    }
+      var type = this.dataset.plural;
 
-  }, false);
+      // References to nodes.
+      var results = document.getElementById('results-' + type);
+      var tbody = document.getElementById('rows-' + type);
+
+      // A template for the table rows.
+      var rowTemplate = {'<>':'tr','html': '<td>${indicator}</td><td>${name}</td><td>${email}</td>'};
+
+      var selection = this.options[this.selectedIndex];
+      if (selection.value) {
+        // If an actual value, replace with the table rows.
+        results.style.display = 'block';
+        var contacts = contactData[type][selection.value];
+        var rows = json2html.transform(contacts, rowTemplate);
+        tbody.innerHTML = rows;
+      }
+      else {
+        // Otherwise, hidden the results.
+        results.style.display = 'none';
+      }
+
+    }, false);
+  }
 })()

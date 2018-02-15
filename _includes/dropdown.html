@@ -1,0 +1,20 @@
+<select class="dropdown" data-plural="{{ include.plural }}">
+  <option value="">Select a {{ include.singular }}</option>
+  {% for item in site.data[include.plural] %}<option value="{{ item[0] }}">{{ item[0] | replace: "_", " " }}</option>{% endfor %}
+</select>
+
+<div id="results-{{ include.plural }}" style="display:none">
+  <table>
+    <thead>
+      <tr>
+        <td>Indicator</td><td>Name</td><td>Email</td>
+      </tr>
+    </thead>
+    <tbody id="rows-{{ include.plural }}"></tbody>
+  </table>
+</div>
+
+<script>
+var contactData = contactData || {};
+contactData.{{ include.plural }} = {{ site.data[include.plural] | jsonify }};
+</script>
