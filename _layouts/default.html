@@ -13,6 +13,12 @@
 
     <a class="usa-skipnav" href="#main-content">Skip to main content</a>
 
+    <header class="usa-header usa-header-extended">
+      <div class="usa-navbar">
+        <h1>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</h1>
+      </div>
+    </header>
+
     <main id="main-content">
     {{ content }}
     </main>
