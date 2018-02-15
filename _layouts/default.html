@@ -1,0 +1,27 @@
+---
+---
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <link href="{{ site.baseurl }}/assets/uswds/css/uswds.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+    <main id="main-content">
+    {{ content }}
+    </main>
+
+    <script src="{{ site.baseurl }}/assets/uswds/js/uswds.min.js" async=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/json2html/1.2.0/json2html.min.js"></script>
+    <script>
+      var contactData = {{ site.data.countries | jsonify }}
+    </script>
+    <script src="{{ site.baseurl }}/assets/js/sdg-contacts.js"></script>
+  </body>
+</html>
