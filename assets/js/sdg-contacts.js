@@ -18,7 +18,7 @@
     if (selection.value) {
       // If an actual value, replace with the table rows.
       results.style.display = 'block';
-      var contacts = contactData[selection.value].contacts;
+      var contacts = contactData[selection.value];
       var rows = json2html.transform(contacts, rowTemplate);
       document.getElementById('rows').innerHTML = rows;
     }
