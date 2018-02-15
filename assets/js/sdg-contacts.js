@@ -18,7 +18,7 @@
       var tbody = document.getElementById('rows-' + type);
 
       // A template for the table rows.
-      var rowTemplate = {'<>':'tr','html': '<td>${indicator}</td><td>${name}</td><td>${email}</td>'};
+      var rowTemplate = {'<>':'tr','html': '<td>${indicator}</td><td>${name}</td><td>${organization}</td><td>${email}</td>'};
 
       var selection = this.options[this.selectedIndex];
       if (selection.value) {
